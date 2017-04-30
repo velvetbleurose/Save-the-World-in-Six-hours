@@ -3,6 +3,8 @@ from flask import Flask, Response, request, render_template, redirect, url_for
 import flask
 import mongoQ
 import flask_login
+import send
+
 
 app = Flask(__name__)
 
@@ -66,6 +68,7 @@ def hello():
         #else create account
         print("HelloLast")
         mongo.createAccount({'username':username,'password':password})
+        mongo.createAccInfo({"contacts": [{"name":request.form.get("name"), "phone":request.form.get("phone")}]})
         return render_template('home.html', register='True')
 
 @app.route("/user",methods=['GET','POST'])
@@ -75,6 +78,13 @@ def user():
         return render_template('user.html', changedVal='False')
     elif flask.request.method =='POST':
         #db stuff
+
+        mongo.addInput({'uid':mongo.getUID({'username':flask_login.current_user.id})['uid'], 'date':'20170430', 'mood': request.form.get("mood"), 'appetite':request.form.get('appetite'), 'productivity':request.form.get('motivation'), 'sleep':request.form.get('sleep'), 'energy':request.form.get('energy'), 'social':request.form.get('social'), 'goals':request.form.get('goals')})
+
+        send.check_date(mongo,{'uid':mongo.getUID({'username':flask_login.current_user.id})['uid']})
+
+
+
         return render_template('user.html', changedVal='True')
     
 @app.route("/logout")

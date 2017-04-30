@@ -63,10 +63,10 @@ class stwishDB():
 			return None
 
 	def createAccInfo(self, infoDict):
-		if infoDict['updateFreq'] > 3:
-			infoDict['updateFreq'] = 3
-		elif infoDict['updateFreq'] < 1:
-			infoDict['updateFreq'] = 1
+		# if infoDict['updateFreq'] > 3:
+		# 	infoDict['updateFreq'] = 3
+		# elif infoDict['updateFreq'] < 1:
+		# 	infoDict['updateFreq'] = 1
 
 		result = mongo.db['acc_info'].insert_one(infoDict)
 		if result.acknowledged:
@@ -93,16 +93,16 @@ class stwishDB():
 		return updated
 
 	def addInput(self, inputDict):
-		collName = inputDict['uid'] + "_input"
+		collName = str(inputDict['uid']) + "_input"
 		result = mongo.db[collName].insert_one(inputDict)
-		if result['acknowledged']:
-			return {'uid':result['inserted_id']}
+		if result.acknowledged:
+			return {'uid':result.inserted_id}
 		else:
 			return None
 
 	def getInput(self, uidDict, n):
-		collName = uidDict['uid'] + "_input"
-		result = mongo.db[collName].find(uidDict, limit=n, sort=[('date', -1)])
+		collName = str(uidDict['uid']) + "_input"
+		result = mongo.db[collName].find(uidDict, limit=n, sort=[('date', -1), ('id', -1)])
 		return result
 
 	def getFrequency(self, uidDict):
