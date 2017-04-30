@@ -14,11 +14,11 @@ def login():
     if flask.request.method == 'GET':
         return render_template('login.html')
     elif flask.request.method == 'POST':
-        return 
+        return render_template('home.html', register='True')
 
 @app.route("/",methods=['GET'])
 def hello():
-    return render_template('home.html')
+    return render_template('home.html', register='False')
     
 @app.route("/user",methods=['GET'])
 def user():
