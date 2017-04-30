@@ -20,9 +20,15 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-       		<a class="nav-link" href="/login">Login</a>
+        {%if not current_user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        {%else%}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
         </li>
+        {%endif%}
         <li class="nav-item">
           <a class="nav-link" href="/user">Daily Diary</a>
         </li>
@@ -47,6 +53,7 @@
 
 
      </div>
+    {% if not current_user.is_authenticated %}
      <div class="col-sm-4">
       <h3>Get Started</h3>        
 
@@ -64,6 +71,7 @@
     </form>
 
   </div>
+  {% endif %}
 </div>
 </div>
 
