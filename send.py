@@ -91,19 +91,19 @@ def check_status(m, u, l1, l2, l3):
 	if l1['mood'] < l2['mood'] < l3['mood']: 
 		call_friends(m, u, 'mood')
 
-	if (l1['appetite'] == 'Didnt want to eat anything' and l2['appetite'] == 'Didnt want to eat anything') or (l2['appetite'] == 'Didnt want to eat anything' and l3['appetite'] == 'Didnt want to eat anything') or (l1['appetite'] == 'Didnt want to eat anything' and l3['appetite'] == 'Didnt want to eat anything'):
+	if (l1['appetite'] == '1' and l2['appetite'] == '1') or (l2['appetite'] == '1' and l3['appetite'] == '1') or (l1['appetite'] == '1' and l3['appetite'] == '1'):
 		call_friends(m, u, 'appetite')
 
-	if (l1['sleep'] == '0-3' and l2['sleep']) or (l2['sleep'] == '0-3' and l3['sleep']) or (l1['sleep'] == '0-3' and l3['sleep']):
+	if (l1['sleep'] == '1' and l2['sleep'] == '1') or (l2['sleep'] == '1' and l3['sleep'] == '1') or (l1['sleep'] == '1' and l3['sleep'] == '1'):
 		call_friends(m, u, 'sleep')
 
-	if (l1['productivity'] == 'Stayed in bed all day' and l2['productivity'] == 'Stayed in bed all day') or (l2['productivity'] == 'Stayed in bed all day' and l3['productivity'] == 'Stayed in bed all day') or (l1['productivity'] == 'Stayed in bed all day' and l3['productivity'] == 'Stayed in bed all day'):
+	if (l1['productivity'] == '1' and l2['productivity'] == '1') or (l2['productivity'] == '1' and l3['productivity'] == '1') or (l1['productivity'] == '1' and l3['productivity'] == '1'):
 		call_friends(m, u, 'productivity')
 
-	if (l1['energy]'] == 'Low' or l1['energy]']=='Exhausted' and l2['energy'] == 'Low' or l2['energy]']=='Exhausted') or (l2['energy]'] == 'Low' or l2['energy]']=='Exhausted' and l3['energy'] == 'Low' or l3['energy]']=='Exhausted') or (l1['energy]'] == 'Low' or l1['energy]']=='Exhausted' and l3['energy'] == 'Low' or l3['energy]']=='Exhausted'):
+	if (l1['energy]'] == '1' or l1['energy]']=='2' and l2['energy'] == '1' or l2['energy]']=='2') or (l2['energy]'] == '1' or l2['energy]']=='2' and l3['energy'] == '1' or l3['energy]']=='2') or (l1['energy]'] == '1' or l1['energy]']=='2' and l3['energy'] == '1' or l3['energy]']=='2'):
 		call_friends(m, u, 'energy')
 
-	if (l1['feelings]'] == 'Distracted' or l1['feelings]']=='Stressed' and l2['feelings'] == 'Distracted' or l2['feelings]']=='Stressed') or (l2['feelings]'] == 'Distracted' or l2['feelings]']=='Stressed' and l3['feelings'] == 'Distracted' or l3['feelings]']=='Stressed') or (l1['feelings]'] == 'Distracted' or l1['feelings]']=='Stressed' and l3['feelings'] == 'Distracted' or l3['feelings]']=='Stressed'):
+	if (l1['feelings]'] == '1' or l1['feelings]']=='2' and l2['feelings'] == '1' or l2['feelings]']=='2') or (l2['feelings]'] == '1' or l2['feelings]']=='2' and l3['feelings'] == '1' or l3['feelings]']=='2') or (l1['feelings]'] == '1' or l1['feelings]']=='2' and l3['feelings'] == '1' or l3['feelings]']=='2'):
 		call_friends(m, u, 'feelings')
 
 def call_friends(m, u, problem)
