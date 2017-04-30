@@ -13,6 +13,9 @@ def login():
 def hello():
     return render_template('home.html')
     
+@app.route("/",methods=['GET'])
+def user():
+    return render_template('user.html')
 
 if __name__ == "__main__":
     app.run(port='5000')
