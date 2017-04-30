@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <!-- users tracking data buttons-->
 
-<head> <link rel="stylesheet" type="text/css" href="mystyle.css"></head>
-
 <title> Profile </title>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
 <!-- credit for icons goes to https://dribbble.com/shots/2624121-Mood-Icons -->
 {% if changedVal %}
 	<h2>Updated</h2>
 {% endif %}
-<strong>Overall, how is your mood?</strong>
 <!-- not sure if this form is correct-->
 
 
 <form method="post">
-<table style="width:50%">
+<table class="table">
+	<thread>
 	<tr>
 		<td><strong>Overall, how is your mood?</strong></td>
 		<td><img src="{{url_for('static', filename='1.png')}}"></td>
@@ -24,6 +31,8 @@
 		<td><img src="{{url_for('static', filename='4.png')}}"></td>
 		<td><img src="{{url_for('static', filename='5.png')}}"></td>
 	</tr>
+	</thread>
+	<thread>
 	<tr>
 		<td></td>
 		<td align="center"><input type="radio" name="answer"></td>
@@ -32,19 +41,23 @@
 		<td align="center"><input type="radio" name="answer"></td>
 		<td align="center"><input type="radio" name="answer"></td>
 	</tr>
-
+	</thread>
+	<thread>
 	<tr>
 		<td><strong>How is your appetite?</strong></td>
 		<td align="center">Hungry</td>
 		<td align="center">So-so</td>
 		<td align="center">Didn't want to eat anything</td>
 	</tr>
+	</thread>
+	<thread>
 	<tr>
 		<td></td>
 		<td align="center"><input type="radio" name="hungry" value="1"></td>
 		<td align="center"><input type="radio" name="so-so" value="1"></td>
 		<td align="center"><input type="radio" name="don't want anything" value="1"></td>
 	</tr>
+	</thread>
 	<tr>
 		<td><strong>How is your motivation?</strong></td>
 		<td align="center">Productive</td>
@@ -61,4 +74,13 @@
 
 <input type="submit" name="submit" value="Log today's journal">
 </form>
+
+
+
+
+
+
+
+
+
 
