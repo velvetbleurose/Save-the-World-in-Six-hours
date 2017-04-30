@@ -50,12 +50,17 @@ def login():
         if uid == None:
             return render_template('login.html', message='Incorrect username/password')
         
+        user = User()
+        user.id = request.form.get("username")
+        flask_login.login_user(user)
         return render_template('home.html')
+    
 @app.route("/",methods=['GET'])
 def hello():
     return render_template('home.html', register='False')
-    
+
 @app.route("/user",methods=['GET','POST'])
+@flask_login.login_required
 def user():
     if flask.request.method == 'GET':
         return render_template('user.html', changedVal='False')
