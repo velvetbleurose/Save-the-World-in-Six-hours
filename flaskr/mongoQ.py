@@ -51,6 +51,9 @@ class stwishDB():
 		else:
 			return None
 
+	def getAccount(self, uidDict):
+		return mongodb['accounts'].find_one(uidDict)
+
 
 	def getUID(self, usernameDict):
 		account = mongo.db['accounts'].find_one(usernameDict)
@@ -107,9 +110,3 @@ class stwishDB():
 
 	def getContacts(self, uidDict):
 		return this.getAccInfo(uidDict)['contacts']
-
-	'''
-	getter for updateFreq
-	getter for contacts
-	getter for past n posts
-	'''
