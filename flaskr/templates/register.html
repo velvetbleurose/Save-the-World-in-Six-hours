@@ -1,16 +1,46 @@
-<title>Welcome!</title>
+<head>
+  <title>Welcome!!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-Register here:
-<form method="post">
-	<!--
-	First Name: <input type="text" name="firstname" id=""></br>
-	Last Name: <input type="text"></br>
-	Phone number: <input type="text"></br>
-	Email: <input type="text"></br>
-	-->
-	Username: <input type="text" name="username" id="username"></br>
-	Password: <input type="text" name="password" id="password"></br>
+<div class="jumbotron text-center">
+  <h1>Register Here</h1>
+  <p>We're happy to have you here!</p> 
+</div>
 
-	<input type="submit" value="Register!">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>How we hope to help</h3>
+	<p>Our goal today is to Save The World by connecting you and your loved ones around you. Here at STWISH,
+	we allow a user to maintain a small, minimal-effort journal about their health, habits, and happiness.
+	What really makes STWISH special is not only the ability of your approved loved ones to see your personal
+	updates, but also to be notified when your journal entries imply a difficult time for you. They'll be there, ready to help you before you even have to ask.</p>
+	</br>
+	
+	
+    </div>
+    <div class="col-sm-4">
+      <h3>Get Started</h3>        
 
+	<form>
+	  <div class="form-group">
+    	<label for="username">Username:</label>
+    <input type="username" class="form-control" id="username">
+  	</div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <button type="submit" class="btn btn-default">Register!</button>
 </form>
+
+    </div>
+  </div>
+</div>
+
