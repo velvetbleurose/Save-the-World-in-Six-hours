@@ -13,7 +13,7 @@ app.config['MYSQL_DATAHBASE_PASSWORD'] = 'password'
 app.config['MYSQL_DATABSE_DB'] = 'dbname'
 app.config['MYSQL_DATABASE_HOST'] = 'host'
 
-@app.route("/",methods=['GET'])
+@app.route("/login",methods=['GET'])
 def login():
     if flask.request.method == 'GET':
         return render_template('login.html')
@@ -22,7 +22,7 @@ def login():
 def hello():
     return render_template('home.html')
     
-@app.route("/",methods=['GET'])
+@app.route("/user",methods=['GET'])
 def user():
     return render_template('user.html')
 
