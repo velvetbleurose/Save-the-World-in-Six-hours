@@ -6,7 +6,7 @@ import mongoQ
 
 m = mongoQ.stwish()
 
-def check_date(user):
+def check_date(m, user):
 	u = {'username': user}
 	uid = mongoQ.getUID(u) # {UID: uid}
 	frequency = m.getFrequency(uid) 
@@ -20,7 +20,7 @@ def check_date(user):
 	#if frequency == 3:
 
 	for i in range(len(input_info)):
-		if i < len(input_info)-1:
+		if i < len(input_info)-2:
 
 			#1 comes after 2 
 			n = i + 1
@@ -44,7 +44,7 @@ def check_date(user):
 					print '2'
 					if int(day1) - int(day2) <= 1 and int(day2) - int(day3) <= 1: #check if the dates are 1 day apart 
 						print '3'
-						check_status(log1, log2, log3)
+						check_status(m, u, log1, log2, log3)
 					else:
 						print '4'
 						#send reminder to user
@@ -52,14 +52,14 @@ def check_date(user):
 					print '5'
 					if (month2 in thirty and day1 == '01' and day3 == '29') or (month2 in thirtyone and day1 == '01' and day3 == '30') or (month2 == '02' and day1 == '01' and day3 == '27'):
 						print '6'
-						check_status(log1, log2, log3)
+						check_status(m, u, log1, log2, log3)
 					else:
 						print '7'
 						#send reminder to user
 				elif month1 == month2 and month2 > month3:
 					if (month3 in thirty and day1 == '02' and day2 == '01') or (month3 in thirtyone and day1 == '02' and day2 == '01') or (month2 == '02' and day1 == '02' and day3 == '31'):
 						print '6'
-						check_status(log1, log2, log3)
+						check_status(m, u, log1, log2, log3)
 					else:
 						print '7'
 						#send reminder to user
@@ -68,13 +68,13 @@ def check_date(user):
 					print '5'
 					if (month1 == '01' and day1 == '01' and month2 == '12' and day2 == '31'):
 						print '6'
-						check_status(log1, log2, log3)
+						check_status(m, u, log1, log2, log3)
 					else:
 						print '7'
 						#send reminder to user
 
 
-def check_status(l1, l2, l3):
+def check_status(m, u, l1, l2, l3):
 	'''
 	date = ''
 	mood = #
@@ -89,18 +89,21 @@ def check_status(l1, l2, l3):
 	'''
 
 	if l1['mood'] < l2['mood'] < l3['mood']: 
-		call_friends('mood')
+		call_friends(m, u, 'mood')
 
 	if (l1['appetite'] == 'Didnt want to eat anything' and l2['appetite'] == 'Didnt want to eat anything') or (l2['appetite'] == 'Didnt want to eat anything' and l3['appetite'] == 'Didnt want to eat anything') or (l1['appetite'] == 'Didnt want to eat anything' and l3['appetite'] == 'Didnt want to eat anything'):
-		call_friends('appetite')
+		call_friends(m, u, 'appetite')
 
 	if (l1['sleep'] == '0-3' and l2['sleep']) or (l2['sleep'] == '0-3' and l3['sleep']) or (l1['sleep'] == '0-3' and l3['sleep']):
-		call_friends('sleep')
+		call_friends(m, u, 'sleep')
 
 	if (l1['energy]'] == 'Low' or l1['energy]']=='Exhausted' and l2['energy'] == 'Low' or l2['energy]']=='Exhausted') or (l2['energy]'] == 'Low' or l2['energy]']=='Exhausted' and l3['energy'] == 'Low' or l3['energy]']=='Exhausted') or (l1['energy]'] == 'Low' or l1['energy]']=='Exhausted' and l3['energy'] == 'Low' or l3['energy]']=='Exhausted'):
-		call_friends('energy')
+		call_friends(m, u, 'energy')
 
-def call_friends(problem)
+	if (l1['feelings]'] == 'Distracted' or l1['feelings]']=='Stressed' and l2['feelings'] == 'Distracted' or l2['feelings]']=='Stressed') or (l2['feelings]'] == 'Distracted' or l2['feelings]']=='Stressed' and l3['feelings'] == 'Distracted' or l3['feelings]']=='Stressed') or (l1['feelings]'] == 'Distracted' or l1['feelings]']=='Stressed' and l3['feelings'] == 'Distracted' or l3['feelings]']=='Stressed'):
+		call_friends(m, u, 'feelings')
+
+def call_friends(m, u, problem)
 
 	# Find these values at https://twilio.com/user/account
 	account_sid = "ACcb2b49456476e58cefda5c3bdc623d21"
@@ -109,9 +112,22 @@ def call_friends(problem)
 
 	contacts = m.getContacts(uid)
 
-	for i in range(len(contacts)):
-		for i in contacts.keys: 
-			message = client.api.account.messages.create(to="+14016543213", from_="+15085572143", body="Hello")
+	for dictionary in contacts:	#for i in contacts:
+		for name in dictionary:
+			print dictionary[name]
+			if problem == 'mood':
+				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. They have been feeling a little down. Please call them and say hello!")
+			elif problem == 'appetite':
+				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. They haven't been eaten well. Please call them and say hello!")
+			elif problem == 'sleep':
+				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. They haven't been sleeping. Please call them and say hello!")
+			elif problem == 'energy':
+				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. Their energy has been a little down. Please call them and say hello!")
+			elif problem == 'feelings':
+				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. Their feeling a little off today. Please call them and say hello!")
+
+
+
 
 
 
