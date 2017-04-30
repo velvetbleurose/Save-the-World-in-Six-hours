@@ -7,7 +7,7 @@
 <strong>Overall, how is your mood?</strong>
 <!-- not sure if this form is correct-->
 <form method="post">
-<input type="radio" name="1" value="1">1
+<input src="{{url_for('static', filename='1.png')}}" name="1" value="1">1
 <input type="radio" name="2" value="2">2
 <input type="radio" name="3" value="3">3
 <input type="radio" name="4" value="4">4
@@ -26,5 +26,4 @@
 <br>
 <input type="submit" name="submit" value="Log today's journal">
 </form>
-
 
