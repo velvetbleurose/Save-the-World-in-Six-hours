@@ -9,10 +9,12 @@ app.config['MYSQL_DATAHBASE_PASSWORD'] = 'password'
 app.config['MYSQL_DATABSE_DB'] = 'dbname'
 app.config['MYSQL_DATABASE_HOST'] = 'host'
 
-@app.route("/login",methods=['GET'])
+@app.route("/login",methods=['GET','POST'])
 def login():
     if flask.request.method == 'GET':
         return render_template('login.html')
+    elif flask.request.method == 'POST':
+        return 
 
 @app.route("/",methods=['GET'])
 def hello():
@@ -22,5 +24,11 @@ def hello():
 def user():
     return render_template('user.html')
 
+@app.route("/register",methods=['GET','POST'])
+def register():
+    if flask.request.method == 'GET':
+        return render_template('regsiter.html')
+    elif flask.request.method == 'POST':
+        return
 if __name__ == "__main__":
     app.run(port='5000')
