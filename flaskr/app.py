@@ -23,7 +23,7 @@ def hello():
 def user():
     if flask.request.method == 'GET':
         return render_template('user.html', updated='False')
-    elif flask.requset.method ='POST':
+    elif flask.request.method =='POST':
         #db stuff
         return render_template('user.html', updated='True')
     
