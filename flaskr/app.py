@@ -22,10 +22,10 @@ def hello():
 @app.route("/user",methods=['GET','POST'])
 def user():
     if flask.request.method == 'GET':
-        return render_template('user.html', updated='False')
+        return render_template('user.html', changedVal='False')
     elif flask.request.method =='POST':
         #db stuff
-        return render_template('home.html', updated='True')
+        return render_template('user.html', changedVal='True')
     
 @app.route("/register",methods=['GET','POST'])
 def register():
