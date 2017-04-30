@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!-- users tracking data buttons-->
 
-<title> Profile </title>
-
-
 <!-- credit for icons goes to https://dribbble.com/shots/2624121-Mood-Icons -->
 {% if changedVal %}
 	<h2>Updated</h2>
@@ -37,7 +34,6 @@
 			</ul>
 		</div>
 	</nav>
-	<br>
 
 <form method="post">
 <table class="table">
@@ -67,6 +63,8 @@
 		<td align="center">Hungry</td>
 		<td align="center">So-so</td>
 		<td align="center">Didn't want to eat anything</td>
+		<td></td>
+		<td></td>
 	</tr>
 	</thread>
 	<thread>
@@ -75,6 +73,8 @@
 		<td align="center"><input type="radio" name="hungry" value="1"></td>
 		<td align="center"><input type="radio" name="so-so" value="1"></td>
 		<td align="center"><input type="radio" name="don't want anything" value="1"></td>
+		<td></td>
+		<td></td>
 	</tr>
 	</thread>
 	<tr>
@@ -82,12 +82,15 @@
 		<td align="center">Productive</td>
 		<td align="center">Did a few things</td>
 		<td align="center">Stayed in bed all day</td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td></td>
 		<td align="center"><input type="radio" name="high" value="productive"></td>
 		<td align="center"><input type="radio" name="med" value="did a few things"></td>
 		<td align="center"><input type="radio" name="low" value="stayed in bed"></td>
+		<td></td>
+		<td></td>
 	</tr>
 </table>
-	<div class="container" style="top:100px">
