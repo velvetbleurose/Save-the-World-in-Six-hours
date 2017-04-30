@@ -78,5 +78,11 @@ def user():
         #db stuff
         return render_template('user.html', changedVal='True')
     
+@app.route("/logout")
+@flask_login.login_required
+def logout():
+    flas_login.logout_user()
+    return render_template('home.html')
+
 if __name__ == "__main__":
     app.run(port='5000')
