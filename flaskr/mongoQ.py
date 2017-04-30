@@ -99,7 +99,7 @@ class stwishDB():
 
 	def getInput(self, uidDict, n):
 		collName = uidDict['uid'] + "_input"
-		result = mongo.db[collName].find_one(uidDict, limit=n, sort=[('date', -1)])
+		result = mongo.db[collName].find(uidDict, limit=n, sort=[('date', -1)])
 		return result
 
 	def getFrequency(self, uidDict):
