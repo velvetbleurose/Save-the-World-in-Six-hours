@@ -91,7 +91,7 @@ def user():
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
-    return render_template('home.html')
+    return redirect(url_for('/'))
 
 if __name__ == "__main__":
     app.run(port='5000')
