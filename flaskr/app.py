@@ -1,15 +1,15 @@
 from flask import Flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 import flask
-#from flaskext.mysql import MySQL
-#import mongoQ
+from flaskext.mysql import MySQL
+import mongoQ
 
 app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'savetheworld'
 app.config['MONGO_URI'] = 'mongodb://127.0.0.1:27017/savetheworld'
 
-#mongo = mongoQ.stwishDB(app)
+mongo = mongoQ.stwishDB(app)
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -32,7 +32,7 @@ def user():
 @app.route("/register",methods=['GET','POST'])
 def register():
     if flask.request.method == 'GET':
-        return render_template('regiter.html')
+        return render_template('register.html')
     elif flask.request.method == 'POST':
         return render_template('home.html', register='True')
 if __name__ == "__main__":
