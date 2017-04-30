@@ -14,21 +14,24 @@ def login():
     if flask.request.method == 'GET':
         return render_template('login.html')
     elif flask.request.method == 'POST':
-        return render_template('home.html', register='True')
-
+        return
 @app.route("/",methods=['GET'])
 def hello():
     return render_template('home.html', register='False')
     
-@app.route("/user",methods=['GET'])
+@app.route("/user",methods=['GET','POST'])
 def user():
-    return render_template('user.html')
-
+    if flask.request.method == 'GET':
+        return render_template('user.html', updated='False')
+    elif flask.requset.method ='POST':
+        #db stuff
+        return render_template('user.html', updated='True')
+    
 @app.route("/register",methods=['GET','POST'])
 def register():
     if flask.request.method == 'GET':
-        return render_template('regsiter.html')
+        return render_template('regiter.html')
     elif flask.request.method == 'POST':
-        return
+        return render_template('home.html', register='True')
 if __name__ == "__main__":
     app.run(port='5000')
