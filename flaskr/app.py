@@ -13,8 +13,6 @@ mongo = mongoQ.stwishDB(app)
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-mongo = mongoQ.stwishDB(app)
-
 @login_manager.user_loader
 def user_loader(username):
     uid = mongo.getUID({"username":username})
