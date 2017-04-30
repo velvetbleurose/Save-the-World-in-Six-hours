@@ -1,66 +1,6 @@
 <!-- author ben lawson (balawson@bu.edu) modified by hanson duan (duanhans@bu.edu)-->
 <!doctype html>
-<title>Photoshare</title>
-
-{% if name %}
-  <h1>Hello {{ name }}!</h1>
-{% endif %}
-
-{% with messages = get_flashed_messages() %}
-	{% if messages %}
-		{% for message in messages %}
-			<h1>{{message}}</h1>
-		{% endfor %}
-	{%endif%}
-{%endwith%}
-
-{% if msg %}
-  <h4>{{msg}}</h4>
-{% endif %}
-
-{% if request.args.get('error') == 'noAlbum'%}
-	<h1> Please create an album before uploading a photo!</h1>
-{%endif%}
-{% if photos %}
-<h2>Here's your photos</h2>
-    <ul>
-    {% for photo in photos %}
-        <li><img src='data:image/png;base64, {{photo[0]}}'/></li>
-    {% endfor %}
-    </ul>
-{% endif %}
-
-{% if message is none %}
-  <p>You should <a href='/login'>login!</a></p>
-{% elif name %}
-<ul>
-<li><a href='/album/create'>Create an album</a>
-<li><a href='/album/manage'>Manage your albums</a>
-<li><a href='/album/photos'>Manage your photos</a>
-<li><a href='/album/tags'>View your photos by tag</a>
-<li><a href='/album/recommend'>Get some tag recommendations</a>
-<li><a href='/upload'>Upload a photo</a> </li> 
-<li><a href='/logout'>Logout</a></li>
-<li><a href='/'>Home</a></li>
-</ul>
-{% elif not name %}
-  <p> Go to <a href='/profile'>profile?</a></p>
-  <p><h3>Browse</h3></p>
-  <ul>
-  <li><a href='/browse/photo'>Browse photos</a></li>
-  <li><a href='/browse/album'>	Browse albums</a></li>
-  <li><a href='/browse/tags'>	Browse photos by tag</a></li>
-  <li><a href='/browse/search'>	Search for photos by tag</li></a>
-  <li><a href='/browse/mostpopular'> Most popular tags</a>
-  <li><a href='/browse/recommendations'> You may also like...</a>
-  </ul>
-  <p><h3>User Management</h3><p>
-  <ul>
-  <li><a href='/users/add'>Add friends</a></li>
-  <li><a href='/users/view'>View your friends</a></li>
-  <li><a href='/users/contribution'>View user contributions</a></li>
-  </ul>
-{% endif %}
+<title>Save the world</title>
 
 
 
