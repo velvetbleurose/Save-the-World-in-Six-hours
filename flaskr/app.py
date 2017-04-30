@@ -2,12 +2,14 @@ from flask import Flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 import flask
 #from flaskext.mysql import MySQL
+import mongoQ
+
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'user'
-app.config['MYSQL_DATAHBASE_PASSWORD'] = 'password'
-app.config['MYSQL_DATABSE_DB'] = 'dbname'
-app.config['MYSQL_DATABASE_HOST'] = 'host'
+app.config['MONGO_DBNAME'] = 'savetheworld'
+app.config['MONGO_URI'] = 'mongodb://127.0.0.1:27017/savetheworld'
+
+mongo = mongoQ.stwishDB(app)
 
 @app.route("/login",methods=['GET','POST'])
 def login():
