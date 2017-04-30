@@ -2,7 +2,6 @@ from flask import Flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 import flask
 import mongoQ
-import flask.ext.login as flask_login
 import flask_login
 
 app = Flask(__name__)
@@ -81,7 +80,7 @@ def user():
 @app.route("/logout")
 @flask_login.login_required
 def logout():
-    flas_login.logout_user()
+    flask_login.logout_user()
     return render_template('home.html')
 
 if __name__ == "__main__":
