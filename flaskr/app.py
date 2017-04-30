@@ -1,11 +1,7 @@
 from flask import Flask
 from flask import Flask, Response, request, render_template, redirect, url_for
-<<<<<<< HEAD
 import flask
-=======
-from flaskext.mysql import MySQL
->>>>>>> d9e288ea855d03681279af70568bf2fe06d6f7dd
-
+#from flaskext.mysql import MySQL
 app = Flask(__name__)
 
 app.config['MYSQL_DATABASE_USER'] = 'user'
