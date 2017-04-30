@@ -3,13 +3,36 @@ from flask import Flask, Response, request, render_template, redirect, url_for
 import flask
 #from flaskext.mysql import MySQL
 import mongoQ
+import flask.ext.login as flask_login
 
 app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'savetheworld'
 app.config['MONGO_URI'] = 'mongodb://127.0.0.1:27017/savetheworld'
 
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+
 mongo = mongoQ.stwishDB(app)
+
+@login_manager.user_loader
+def user_loader(username):
+    uid = mongo.getUID({"username":username})
+    if uid == None:
+        return
+    user = User()
+    user.id = username
+    return user
+
+@login_manager.request_loader
+def request_loader(request):
+    uid = mongo.getUID({"username":request.form.get("username"),"password":request.form.get("password")})
+    if uid == None:
+        return
+    user = User()
+    user.id = request.form.get("username")
+    user.is_authenticated = True
+    return user
 
 @app.route("/login",methods=['GET','POST'])
 def login():
