@@ -47,16 +47,16 @@
      <div class="col-sm-4">
       <h3>Get Started</h3>        
 
-      <form>
-       <div class="form-group">
-         <label for="username">Username:</label>
-         <input type="username" class="form-control" id="username">
-       </div>
-       <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
+      <form method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Username" name="username"><br>
       </div>
-      <button type="submit" class="btn btn-default">Register!</button>
+      <br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Password" name="password"><br>
+      </div>
+      <br>
+      <input type="submit" class="btn btn-primary" value="Register">
     </form>
 
   </div>

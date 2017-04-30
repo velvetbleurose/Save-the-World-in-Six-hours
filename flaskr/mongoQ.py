@@ -24,8 +24,8 @@ date
 mood
 appetite
 productivity
-
-...moreStuff
+sleep
+energy
 
 '''
 
@@ -45,7 +45,7 @@ class stwishDB():
 		else:
 			userDict['uid'] = 1000000
 		
-		if getUID(userDict) == None:
+		if self.getUID(userDict) == None:
 			result = mongo.db['accounts'].insert_one(userDict)
 			return {'uid':result.inserted_id}	#returns acknowledged(a boolean) and inserted_id
 		else:
@@ -106,7 +106,7 @@ class stwishDB():
 		return result
 
 	def getFrequency(self, uidDict):
-		return this.getAccInfo(uidDict)['updateFreq']
+		return self.getAccInfo(uidDict)['updateFreq']
 
 	def getContacts(self, uidDict):
-		return this.getAccInfo(uidDict)['contacts']
+		return self.getAccInfo(uidDict)['contacts']
