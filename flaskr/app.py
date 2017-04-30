@@ -1,10 +1,8 @@
 from flask import Flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 import flask
-from flaskext.mysql import MySQL
 import mongoQ
-import mongoQ
-import flask.ext.login as flask_login
+import flask_login
 
 app = Flask(__name__)
 
