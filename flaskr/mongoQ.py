@@ -1,4 +1,5 @@
 from flask_pymongo import PyMongo
+import datetime
 
 '''
 _Accounts_
@@ -47,12 +48,12 @@ class stwishDB():
 		
 		if self.getUID(userDict) == None:
 			result = mongo.db['accounts'].insert_one(userDict)
-			return {'uid':result.inserted_id}	#returns acknowledged(a boolean) and inserted_id
+			return {'uid':userDict['uid']}	#returns acknowledged(a boolean) and inserted_id
 		else:
 			return None
 
 	def getAccount(self, uidDict):
-		return mongodb['accounts'].find_one(uidDict)
+		return mongo.db['accounts'].find_one(uidDict)
 
 
 	def getUID(self, usernameDict):
@@ -79,14 +80,14 @@ class stwishDB():
 
 			#untested
 	def editAccount(self, updatedDict):
-		updated = mongodb['accounts'].find_one_and_update({'uid':updatedDict['uid']}, updatedDict)
+		updated = mongo.db['accounts'].find_one_and_update({'uid':updatedDict['uid']}, updatedDict)
 		for key in updatedDict:
 			if updatedDict[key] != updated[key]:
 				return None
 		return updated
 			#untested
 	def editAccInfo(self, updatedDict):
-		updated = mongodb['acc_info'].find_one_and_update({'uid':updatedDict['uid']}, updatedDict)
+		updated = mongo.db['acc_info'].find_one_and_update({'uid':updatedDict['uid']}, updatedDict)
 		for key in updatedDict:
 			if updatedDict[key] != updated[key]:
 				return None
@@ -94,6 +95,8 @@ class stwishDB():
 
 	def addInput(self, inputDict):
 		collName = str(inputDict['uid']) + "_input"
+		today = datetime.date.today();
+		inputDict['date'] = today.strftime("%Y%m%d")
 		result = mongo.db[collName].insert_one(inputDict)
 		if result.acknowledged:
 			return {'uid':result.inserted_id}
