@@ -19,51 +19,54 @@
 					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/user">Daily Diary</a>
+					<a class="nav-link" href="/login">Daily Diary</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	<br>
 	<div class="content container" style="top:100px">
-		{% if register %}
-		<h2> Thank you for registering! <a href='/login'>Login?</a>
-			{% endif %}
+		{% if not current_user.is_authenticated %}
+			{% if register %}
+			<h2> Thank you for registering! <a href='/login'>Login?</a>
+				{% endif %}
 
-			<a href='/login'>Login</a>
-			<a href='/user'>User stuff idk what</a>
-		</h2>
+				<a href='/login'>Login</a>
+				<a href='/user'>User stuff idk what</a>
+			</h2>
 
-		<div class="row">
-			<div class="col-sm-6">
-
-			</div>
-
-			<div class="col-sm-6">
-				<div class="card">
-					<div class="card-block">
-						<h1 class="card-title">Login here!</h1>
-						<br>
-						{{message}}
-						<form method="post">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Username" name="username"><br>
-							</div>
-							<br>
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Password" name="password"><br>
-							</div>
-							<br>
-							<input type="submit" class="btn btn-primary" value="Login">
-							<input type="submit" class="btn btn-primary" value="Sign Up">
-						</form>
-					</div>
+			<div class="row">
+				<div class="col-sm-6">
 
 				</div>
+
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-block">
+							<h1 class="card-title">Login here!</h1>
+							<br>
+							{{message}}
+							<form method="post">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Username" name="username"><br>
+								</div>
+								<br>
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Password" name="password"><br>
+								</div>
+								<br>
+								<input type="submit" class="btn btn-primary" value="Login">
+								<input type="submit" class="btn btn-primary" value="Sign Up">
+							</form>
+						</div>
+
+					</div>
+				</div>
+
 			</div>
-
-		</div>
-
+		{% else %}
+			Welcome {{ current_user.name }}
+		{% endif %}
 	</div>
 </body>
 </html>
