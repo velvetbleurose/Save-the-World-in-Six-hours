@@ -97,6 +97,9 @@ def check_status(m, u, l1, l2, l3):
 	if (l1['sleep'] == '0-3' and l2['sleep']) or (l2['sleep'] == '0-3' and l3['sleep']) or (l1['sleep'] == '0-3' and l3['sleep']):
 		call_friends(m, u, 'sleep')
 
+	if (l1['productivity'] == 'Stayed in bed all day' and l2['productivity'] == 'Stayed in bed all day') or (l2['productivity'] == 'Stayed in bed all day' and l3['productivity'] == 'Stayed in bed all day') or (l1['productivity'] == 'Stayed in bed all day' and l3['productivity'] == 'Stayed in bed all day'):
+		call_friends(m, u, 'productivity')
+
 	if (l1['energy]'] == 'Low' or l1['energy]']=='Exhausted' and l2['energy'] == 'Low' or l2['energy]']=='Exhausted') or (l2['energy]'] == 'Low' or l2['energy]']=='Exhausted' and l3['energy'] == 'Low' or l3['energy]']=='Exhausted') or (l1['energy]'] == 'Low' or l1['energy]']=='Exhausted' and l3['energy'] == 'Low' or l3['energy]']=='Exhausted'):
 		call_friends(m, u, 'energy')
 
@@ -121,6 +124,8 @@ def call_friends(m, u, problem)
 				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. They haven't been eaten well. Please call them and say hello!")
 			elif problem == 'sleep':
 				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. They haven't been sleeping. Please call them and say hello!")
+			elif problem == 'productivity':
+				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. They stayed in bed all day for a couple days. Please call them and say hello!")
 			elif problem == 'energy':
 				message = client.api.account.messages.create(to=dictionary[name], from_="+15085572143", body="Hello " + name + ". " + u + "needs you today. Their energy has been a little down. Please call them and say hello!")
 			elif problem == 'feelings':
