@@ -25,7 +25,7 @@ def user():
         return render_template('user.html', updated='False')
     elif flask.request.method =='POST':
         #db stuff
-        return render_template('user.html', updated='True')
+        return render_template('home.html', updated='True')
     
 @app.route("/register",methods=['GET','POST'])
 def register():

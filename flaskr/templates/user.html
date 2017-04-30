@@ -5,7 +5,7 @@
 
 <!-- credit for icons goes to https://dribbble.com/shots/2624121-Mood-Icons -->
 {% if updated %}
-<h2>Updated</h2>
+	<h2>Updated</h2>
 {% endif %}
 <strong>Overall, how is your mood?</strong>
 <!-- not sure if this form is correct-->
@@ -13,10 +13,10 @@
 
 <form method="post">
 <input src="{{url_for('static', filename='1.png')}}" name="1">
-<input src="{{url_for('static', filename='1.png')}}" type="radio" name="2" value="2">
-<input src="{{url_for('static', filename='1.png')}}" type="radio" name="3" value="3">
-<input src="{{url_for('static', filename='1.png')}}" type="radio" name="4" value="4">
-<input type="radio" name="5" value="5">
+<input src="{{url_for('static', filename='2.png')}}" type="radio" name="2" value="2">
+<input src="{{url_for('static', filename='3.png')}}" type="radio" name="3" value="3">
+<input src="{{url_for('static', filename='4.png')}}" type="radio" name="4" value="4">
+<input src="{{url_for('static', filename='5.png')}}" type="radio" name="5" value="5">
 <br>
 
 <strong>How is your appetite?</strong>
