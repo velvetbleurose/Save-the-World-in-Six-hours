@@ -17,19 +17,19 @@ The Python based web application runs locally. It uses MongoDB to store the info
 
 3. If you do not have pip, depending on your environment: 
 
-`brew install pip`
+  `brew install pip`
 
 or 
 
-`sudo apt-get install python-pip`
+  `sudo apt-get install python-pip`
 
 4. Install the necessary dependencies to run the code
 
-`pip install flask_login pymongo`
+  `pip install flask_login pymongo`
 
 5. Once installed, start up MongoDB. In one terminal window, type **mongod** or **sudo mongod** (if there's an issue with permissions). The last output should be **waiting for connections on port XXXXX**. In another terminal window, go to where the cloned repository is. From the flaskr folder, run
 
-`python app.py` 
+  `python app.py` 
 
 The website will be running on that link
 
