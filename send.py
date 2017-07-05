@@ -109,8 +109,8 @@ def check_status(m, u, l1, l2, l3):
 def call_friends(m, u, problem)
 
 	# Find these values at https://twilio.com/user/account
-	account_sid = "ACcb2b49456476e58cefda5c3bdc623d21"
-	auth_token = "cefd9804843a804aa86dc97faeac66d1"
+	account_sid = "....."
+	auth_token = "....."
 	client = Client(account_sid, auth_token)
 
 	contacts = m.getContacts(uid)
